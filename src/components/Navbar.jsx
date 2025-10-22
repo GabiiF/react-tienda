@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from './Navbar.module.css'; 
 
 const Navbar = () => {
@@ -6,9 +6,18 @@ const Navbar = () => {
         <nav >
             <ul className={styles.lista}>
                 <li className={styles.item}>
-                    <Link to="/" className={styles.link}>Inicio</Link>
-                    <Link to="/moda" className={styles.link}>Moda</Link>
-                    <Link to="/tecnologia" className={styles.link}>Tecnología</Link>
+                    <NavLink to="/" className={styles.link} style={({ isActive }) => ({
+    color: isActive ? 'cadetblue' : '#555',
+    fontWeight: isActive ? 'bold' : 'normal',
+  })}>Inicio</NavLink>
+                    <NavLink to="/moda" className={styles.link} style={({ isActive }) => ({
+    color: isActive ? 'cadetblue' : '#555',
+    fontWeight: isActive ? 'bold' : 'normal',
+  })}>Moda</NavLink>
+                    <NavLink to="/tecnologia" className={styles.link} style={({ isActive }) => ({
+    color: isActive ? 'cadetblue' : '#555',
+    fontWeight: isActive ? 'bold' : 'normal',
+  })}>Tecnología</NavLink>
                 </li>
             </ul>
         </nav>
