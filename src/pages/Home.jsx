@@ -19,7 +19,7 @@ const Home = () => {
     return (
         <>
             <Productos agregarProducto={agregarAlCarrito}/>
-            <hr/>
+            <hr className="border-gray-300 my-8" />
             <Carrito 
             productosEnCarrito ={carrito}
             productosEliminados={eliminarDelCarrito}
