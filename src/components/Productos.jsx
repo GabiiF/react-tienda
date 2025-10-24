@@ -40,7 +40,7 @@ const Productos = ({ agregarProducto }) => {
                             />
                         </Link>
                         <h3 className="mt-4 text-sm text-gray-700 px-2 sm:px-6 sm:pt-2">{producto.title}</h3>
-                        <p className="mt-1 text-lg font-medium text-gray-900 sm:pl-6 sm:pt-1">${producto.price}</p>
+                        <p className="mt-1 text-lg font-medium text-gray-900 px-2 sm:pl-6 sm:pt-2">${producto.price}</p>
                        
                         {/*Botones Tailwind */}
                             <div className="mt-5 mb-2 flex items-center justify-start sm:px-6 sm:pt-2 gap-x-2">
