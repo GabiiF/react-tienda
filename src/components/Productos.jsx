@@ -14,7 +14,7 @@ const Productos = ({ agregarProducto }) => {
             .then((respuesta) => respuesta.json())
             .then((datos) => setProducto(datos))
             // agrego error en setError xq sino me tira error
-            .catch((error) => setError(error, 'Error al cargar productos'))
+            .catch((error) => setError('Error al cargar productos'))
             .finally(() => setCargando(false))
 
     }, []);
