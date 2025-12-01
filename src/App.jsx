@@ -7,6 +7,11 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import { Routes, Route } from 'react-router-dom'
 
+import Login from './pages/Login'
+import Admin from './pages/Admin'
+import RutaProtegida from './components/RutaProtegida'
+import Carrito from './components/Carrito'
+
 function App() {
 
   return (
@@ -18,7 +23,21 @@ function App() {
       <Route path="/tecnologia" element={<Tecnologia/> }/>
       <Route path="/moda" element={<Moda/> }/>
       <Route path="/productos/:id" element={<ProductoDetalle/> }/>
-    </Routes>
+
+      <Route path="/login" element={<Login/> }/>
+      {/*encierro admin para que no lo vean todos*/}
+      <Route path="/admin" element={
+        <RutaProtegida>
+          <Admin/> 
+        </RutaProtegida>
+        }/>
+      {/*encierro el carrito para que no lo vean todos*/}
+      <Route path="/carrito" element={
+        <RutaProtegida>
+          <Carrito/> 
+        </RutaProtegida>
+        }/>
+      </Routes>
     <Footer />
     </>
   )

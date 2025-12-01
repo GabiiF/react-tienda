@@ -1,11 +1,16 @@
 import { useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { CarritoContext } from "../context/CarritoContext";
 
-const Productos = ({ agregarProducto }) => {
+const Productos = () => {
     const [producto, setProducto] = useState([]);//vacio
     const [cargando, setCargando] = useState(true);//al principio esta cargando
     const [error, setError] = useState(null);//al principio no contiene error
+
+    /*uso el contexto*/
+    const {agregarAlCarrito} = useContext(CarritoContext);
 
     const URL = 'https://fakestoreapi.com/products';
 
@@ -45,7 +50,7 @@ const Productos = ({ agregarProducto }) => {
                         {/*Botones Tailwind */}
                             <div className="mt-5 mb-2 flex items-center justify-start sm:px-6 sm:pt-2 gap-x-2">
                                 <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 active:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    onClick={() => agregarProducto(producto)}>Agregar</button>
+                                    onClick={() => agregarAlCarrito(producto)}>Agregar</button>
                                 <Link to={`/productos/${producto.id}`} className="text-sm font-semibold text-gray-900   rounded-md px-3.5 py-2.5 bg-gray-400/50 hover:bg-gray-200 shadow-2xl">Detalles <span aria-hidden="true">→</span></Link>
                             </div>
                         {/*Termina Botones */}
