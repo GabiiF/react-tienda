@@ -3,8 +3,11 @@ import styles from './Header.module.css';
 import UserIcon from '../assets/UserIcon';
 import BagIcon from '../assets/BagIcon';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from "../context/AuthContext";
 
 const Header = ({ contadorEnCarrito = 5 }) => {
+    const { usuario, logout } = useAuthContext();
+    const estaLogeado = !!usuario;
 
     return (
         <header className={styles.header}>
@@ -15,12 +18,14 @@ const Header = ({ contadorEnCarrito = 5 }) => {
 
             {/* Seccion Derecha: Iconos */}
             <div className={styles.iconsContainer}>
-                {/* Icono de Usuario */}
-                <div className={styles.icono}>
+                {/*Me fijo si esta logeado y depende muestro Cerrar Sesion o Ingresá*/}
+                {estaLogeado ?
+                    <button onClick={logout} className={styles.login}>Cerrar Sesion</button>
+                    :
                     <Link to="/login">
-                        <UserIcon />
+                        <button className={styles.login}>Ingresá</button>
                     </Link>
-                </div>
+                }
                 {/* Icono de Carrito con Contador */}
                 <div className={styles.iconoDeCarrito}>
                     <Link to="/carrito">
