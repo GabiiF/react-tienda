@@ -36,10 +36,12 @@ const Login = () => {
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form action="#" method="POST" className="space-y-6" onSubmit={manejarSubmit}>
                         <div>
-                            <label htmlFor='' className="block text-sm/6 font-medium text-gray-900">Usuario</label>
+                            <label htmlFor='usuario' className="block text-sm/6 font-medium text-gray-900">Usuario</label>
                             <div className="mt-2">
                                 <input
                                     type='text'
+                                    id="usuario"
+                                    name="usuario"
                                     value={usuario}
                                     onChange={(evento) => setUsuario(evento.target.value)}
                                     autoComplete="email"
@@ -51,7 +53,7 @@ const Login = () => {
                         {/*Contraseña*/}
                         <div>
                             <div className="flex items-center justify-between">
-                                <label htmlFor='' className="block text-sm/6 font-medium text-gray-900">
+                                <label htmlFor='password' className="block text-sm/6 font-medium text-gray-900">
                                     Contraseña
                                 </label>
                                 <div className="text-sm">
@@ -62,7 +64,9 @@ const Login = () => {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    type='text'
+                                    id="password" 
+                                    type="text" /*password */
+                                    name="password"
                                     value={contrasenia}
                                     onChange={(evento) => setContrasenia(evento.target.value)}
                                     required
