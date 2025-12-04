@@ -4,10 +4,16 @@ import UserIcon from '../assets/UserIcon';
 import BagIcon from '../assets/BagIcon';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from "../context/AuthContext";
+import { CarritoContext } from "../context/CarritoContext";
+import { useContext } from "react";
 
-const Header = ({ contadorEnCarrito = 5 }) => {
+const Header = () => {
     const { usuario, logout } = useAuthContext();
     const estaLogeado = !!usuario;
+
+    //para el contador de carrito
+    const { carrito } = useContext(CarritoContext);
+    const contadorEnCarrito = carrito.length;
 
     return (
         <header className={styles.header}>
