@@ -12,7 +12,8 @@ const Productos = () => {
     /*uso el contexto*/
     const {agregarAlCarrito} = useContext(CarritoContext);
 
-    const URL = 'https://fakestoreapi.com/products';
+    /*const URL = 'https://fakestoreapi.com/products';*/
+    const URL = 'https://6931991711a8738467cfaec7.mockapi.io/productos'
 
     useEffect(() => {
         fetch(URL)
