@@ -8,7 +8,7 @@ import Header from './components/Header'
 import { Routes, Route } from 'react-router-dom'
 
 import Login from './pages/Login'
-import Admin from './components/Admin'
+import Admin from './pages/Admin'
 import RutaProtegida from './components/RutaProtegida'
 import Carrito from './components/Carrito'
 
