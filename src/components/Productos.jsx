@@ -3,41 +3,26 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CarritoContext } from "../context/CarritoContext";
+import { useProductosContext } from "../context/ProductosContext";
 
 const Productos = () => {
-    const [producto, setProducto] = useState([]);//vacio
+    /*const [producto, setProducto] = useState([]);//vacio
     const [cargando, setCargando] = useState(true);//al principio esta cargando
-    const [error, setError] = useState(null);//al principio no contiene error
+    const [error, setError] = useState(null);//al principio no contiene error*/
 
     /*uso el contexto*/
-    const {agregarAlCarrito} = useContext(CarritoContext);
+  const { productos, cargando, error } = useProductosContext();
+  const { agregarAlCarrito } = useContext(CarritoContext);
 
-    /*const URL = 'https://fakestoreapi.com/products';*/
-    const URL = 'https://6931991711a8738467cfaec7.mockapi.io/productos'
+  if (cargando) return 'Cargando productos...';
+  if (error) return error;
 
-    useEffect(() => {
-        fetch(URL)
-            .then((respuesta) => respuesta.json())
-            .then((datos) => setProducto(datos))
-            // agrego error en setError xq sino me tira error
-            .catch((error) => setError('Error al cargar productos'))
-            .finally(() => setCargando(false))
-
-    }, []);
-
-    if (cargando) {
-        return <p>Estamos cargando sus productos ...</p>
-    }
-
-    if (error) {
-        return <p>{error}</p>
-    }
     return (
         <div>
             <h2 className="text-3xl font-bold py-8">Productos</h2>
             {/*Comienza el Card */}
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                {producto.map((producto) => (
+                {productos.map((producto) => (
                     <span key={producto.id} className="border-gray-700 shadow-2xl">
                         <Link to={`/productos/${producto.id}`} className="group">
                             <img alt={producto.title}
