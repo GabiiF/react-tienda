@@ -12,13 +12,12 @@ const Login = () => {
     const manejarSubmit = (evento) => {
         evento.preventDefault();
         // Simulamos la Autenticacion
-        if (usuario == 'admin' && contrasenia == '1234') {
-            login(usuario);
-            navigate('/admin');
+        if (login(usuario, contrasenia)) {
+            navigate("/");
         } else {
-            alert('Usuario o Contraseña invalido');
+            alert("Usuario o Contraseña invalido");
         }
-    }
+    };
 
     return (
         <>
@@ -64,7 +63,7 @@ const Login = () => {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    id="password" 
+                                    id="password"
                                     type="text" /*password */
                                     name="password"
                                     value={contrasenia}

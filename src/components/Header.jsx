@@ -15,6 +15,9 @@ const Header = () => {
     const { carrito } = useContext(CarritoContext);
     const contadorEnCarrito = carrito.length;
 
+    // Verificamos si el usuario es admin
+    const esAdmin = usuario?.rol === 'admin';
+
     return (
         <header className={styles.header}>
             {/* Seccion Central: Componente NavBar */}
@@ -25,13 +28,36 @@ const Header = () => {
             {/* Seccion Derecha: Iconos */}
             <div className={styles.iconsContainer}>
                 {/*Me fijo si esta logeado y depende muestro Cerrar Sesion o Ingresá*/}
-                {estaLogeado ?
-                    <button onClick={logout} className={styles.login}>Cerrar Sesion</button>
-                    :
+                {estaLogeado ? (
+                    <>
+
+
+                        {/*Agrego */
+                        /* Verifica si alguien esta logeado */}
+                        {/* Si es admin, hacer el nombre clickeable, si no, solo texto */}
+                        {esAdmin ? (
+                            <Link
+                                to="/admin"
+                                className="hidden md:inline text-sm font-medium text-[#333] hover:underline transition-all duration-200 cursor-pointer"
+                            >
+                                Hola, {usuario.nombre}
+                            </Link>
+                        ) : (
+                            <span className="hidden md:inline text-sm font-medium text-[#333]">
+                                Hola, {usuario.nombre}
+                            </span>
+                        )}
+                        {/*Termino nuevo agregado */}
+
+
+
+                        <button onClick={logout} className={styles.login}>Cerrar Sesion</button>
+                    </>) : (
                     <Link to="/login">
                         <button className={styles.login}>Ingresá</button>
                     </Link>
-                }
+
+                )}
                 {/* Icono de Carrito con Contador */}
                 <div className={styles.iconoDeCarrito}>
                     <Link to="/carrito">

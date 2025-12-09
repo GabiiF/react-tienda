@@ -1,6 +1,22 @@
-import { useContext } from 'react';
-import { useState } from 'react';
-import { createContext } from 'react';
+import { useState, useContext, createContext } from 'react';
+
+
+const USUARIOS_FAKE = [
+  { 
+    id: 1, 
+    usuario: 'admin', 
+    contrasenia: '1234', 
+    rol: 'admin',
+    nombre: 'Admin'
+  },
+  { 
+    id: 2, 
+    usuario: 'gabriela', 
+    contrasenia: '1234', 
+    rol: 'usuario',
+    nombre: 'Gabi'
+  }
+];
 
 // creamos el contexto de Autenticacion 
 const AuthContext = createContext();
@@ -8,12 +24,20 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(null);
   
-  const login = (nombreUsuario) => {
-    // Simulamos la creacion del token 
-    const token = `fake-token-${nombreUsuario}`;
-    localStorage.setItem('authToken', token);
-    setUsuario(nombreUsuario);
-  }                                        
+    const login = (nombreUsuario, contrasenia) => {
+    const usuarioLogin = USUARIOS_FAKE.find(
+      u => u.usuario === nombreUsuario && u.contrasenia === contrasenia
+    );
+
+    if (usuarioLogin) {
+      // Simulamos la creacion del token
+      const token = `fake-token-${nombreUsuario}`;
+      localStorage.setItem('authToken', token);
+      setUsuario(usuarioLogin);
+      return true;
+    }
+    return false;
+  }                                         
   const logout = () => {
     //al cerrar sesion lo remueve
     localStorage.removeItem('authToken');
