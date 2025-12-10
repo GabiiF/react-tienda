@@ -66,12 +66,11 @@ const [productoAEliminar, setProductoAEliminar] = useState(null);
           <p className="text-gray-600 text-lg">No hay productos</p>
         </div>
       ) : (
-        <div className="space-y-4">
-          
+        <div className="space-y-4">         
             {productos.map((producto) => (
               <div
                 key={producto.id}
-                className="bg-white border border-gray-300 rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow duration-200"
+                className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow duration-200"
               >
                 <div className="flex flex-col sm:flex-row gap-4 items-start">
                 {/* Imagen del producto */}
@@ -86,7 +85,7 @@ const [productoAEliminar, setProductoAEliminar] = useState(null);
                      {producto.title}
                     </h3>
                     <p className="text-2xl font-bold text-gray-900">
-                      Precio: ${producto.price}
+                      ${producto.price}
                       </p>
                   </div>
 
