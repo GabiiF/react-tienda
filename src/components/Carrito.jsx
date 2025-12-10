@@ -6,6 +6,7 @@ const Carrito = () => {
     //llamamos del context
     const {carrito, eliminarDelCarrito} =useContext(CarritoContext);
 
+    {/*Si no hay produsctos en el carrito */}
     if (carrito.length === 0) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
@@ -24,9 +25,10 @@ const Carrito = () => {
   }
 
     return (
-        <div>
+        <div className="space-y-4">
             <h2 className="text-3xl font-bold mb-8">Carrito</h2>
             {carrito.map((producto, indice) =>
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
                 <div key={indice} className="grid grid-cols-3 gap-4 mb-6">
                     <img src={producto.image} alt={producto.title} width={80} height={80}></img>
                     <span className="col-span-2">
@@ -36,6 +38,7 @@ const Carrito = () => {
                             Eliminar</button>
                     </span>
                 </div>
+            </div>
             )}
 
         </div>
