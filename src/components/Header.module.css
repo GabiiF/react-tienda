@@ -24,26 +24,3 @@
   justify-content: flex-end; 
   gap: 20px; 
 }
-
-/*.iconoDeCarrito {
-  position: relative;
-  cursor: pointer;
-}*/
-
-.contadorDeCarrito {
-  position: absolute;
-  top: -8px; 
-  right: -10px; 
-  background-color: rgb(228, 42, 42);
-  color: white;
-  border-radius: 50%;
-  padding: 3px 6px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-/*.icono {
-  font-size: 24px;
-  cursor: pointer;
-}*/

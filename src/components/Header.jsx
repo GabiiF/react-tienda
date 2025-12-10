@@ -1,5 +1,4 @@
 import Navbar from "./Navbar";
-import styles from './Header.module.css';
 import BagIcon from '../assets/BagIcon';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuthContext } from "../context/AuthContext";
@@ -18,7 +17,6 @@ const Header = () => {
     // Verificamos si el usuario es admin
     const esAdmin = usuario?.rol === 'admin';
 
-    {/*codigo Tailwind */ }
     // 1. Hook para controlar si el menú móvil está abierto o cerrado
     const [isOpen, setIsOpen] = useState(false);
     // Función para alternar el estado del menú
@@ -26,56 +24,54 @@ const Header = () => {
         setIsOpen(!isOpen);
     };
     // Estilos condicionales para el contenido de la navegación móvil
-    const navClasses = `
-        w-full md:w-auto md:flex md:items-center 
-        ${isOpen ? 'flex flex-col' : 'hidden'} 
-    `;
-    {/*codigo Tailwind */ }
+    const navClasses = `w-full md:w-auto md:flex md:items-center 
+                ${isOpen ? 'flex flex-col' : 'hidden'} `;
+
     // 1. Estilos para el estado de la sesión (Derecha, siempre visible en escritorio)
     const SessionInfo = (
         estaLogeado ? (
-                <>
-                    {/*Agrego - Verifica si alguien esta logeado */}
-                    {/* Si es admin, hacer el nombre clickeable, si no, solo texto */}
-                    {esAdmin ? (
-                        <Link
-                            to="/admin"
-                            className="md:inline text-sm font-medium text-white hover:underline transition-all duration-200 cursor-pointer"
-                        >
-                            Hola, {usuario.nombre}
-                        </Link>
-                    ) : (
-                        <span className="md:inline text-sm font-medium text-white">
-                            Hola, {usuario.nombre}
-                        </span>
-                    )}
-                    {/*Termino nuevo agregado */}
-                    <button onClick={logout} className="bg-red-500 text-lg hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-sm">Cerrar Sesion</button>
-                </>) : (
-                <Link to="/login">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm text-2xl">Ingresá</button>
-                </Link>
-            ) 
+            <>
+                {/*Agrego - Verifica si alguien esta logeado
+                 Si es admin, hacer el nombre clickeable, si no, solo texto */}
+                {esAdmin ? (
+                    <Link
+                        to="/admin"
+                        className="md:inline text-sm font-medium text-white hover:underline transition-all duration-200 cursor-pointer"
+                    >
+                        Hola, {usuario.nombre}
+                    </Link>
+                ) : (
+                    <span className="md:inline text-sm font-medium text-white">
+                        Hola, {usuario.nombre}
+                    </span>
+                )}
+                {/*Boton Cerrar sesion o Ingresar */}
+                <button onClick={logout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-sm text-lg">Cerrar Sesion</button>
+            </>) : (
+            <Link to="/login">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm text-2xl">Ingresá</button>
+            </Link>
+        )
     );
 
-    const IconosCarrito=(
+    const IconosCarrito = (
         <>
-        {/* Icono de Carrito con Contador */}
-                    <div className={styles.iconoDeCarrito}>
-                        <Link to="/carrito">
-                            <BagIcon className="text-sm font-bold py-1 px-3 rounded" />
-                            {/* Renderiza el contador solo si es mayor que 0 */}
-                            {contadorEnCarrito > 0 && (
-                                <span className={styles.contadorDeCarrito}>
-                                    {contadorEnCarrito}
-                                </span>
-                            )}
-                        </Link>
-                    </div>
-                    </>
+            {/* Icono de Carrito con Contador */}
+            <div className="relative">
+                <Link to="/carrito">
+                    <BagIcon className="text-sm font-bold py-1 px-3 rounded" />
+                    {/* Renderiza el contador solo si es mayor que 0 */}
+                    {contadorEnCarrito > 0 && (
+                        <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                            {contadorEnCarrito}
+                        </span>
+                    )}
+                </Link>
+            </div>
+        </>
     );
     return (
-        <header className="bg-gray-800 text-white p-4">
+        <header className="bg-gray-800 text-white p-3 px-4">
             {/* Seccion Central: Componente NavBar */}
             <div className="container mx-auto flex justify-between items-center">
                 {/* --------------------- ESTRUCTURA PRINCIPAL (ESCRITORIO) --------------------- */}
@@ -85,7 +81,7 @@ const Header = () => {
                     <Link to="/" className="text-2xl font-bold">Mi Sitio React</Link>
                     <Navbar />
 
-                   
+
                 </div>
                 {/* 2. Botón de Hamburguesa y Info de Sesión (Derecha en escritorio) */}
                 {/* Botón de Menú Hamburguesa */}
@@ -104,7 +100,7 @@ const Header = () => {
                         </svg>
                     </button>
 
-                    {/*Botón Cerrar Sesion o Ingresá y Carrito*/}
+                    {/*Para que aparezca afuera - Botón Cerrar Sesion o Ingresá y Carrito*/}
                     <div className="flex items-center space-x-4  md:ml-4" >
                         {SessionInfo}
                         {IconosCarrito}
@@ -144,15 +140,14 @@ const Header = () => {
                                 <Link to="/moda" className="hover:text-blue-400" onClick={toggleMenu}>Moda</Link>
                                 <Link to="/tecnologia" className="hover:text-blue-400" onClick={toggleMenu}>Tecnología</Link>
                                 {/*Botón Cerrar Sesion o Ingresá*/}
-                    
-                            {/*Termino Menu uno abajo del otro
-                            <div className="flex items-center space-x-4 md:ml-6" >
-                                {SessionInfo}
-                                {IconosCarrito}
-                            </div >*/}
+
+                                {/*Termino Menu uno abajo del otro
+                                <div className="flex items-center space-x-4 md:ml-6" >
+                                    {SessionInfo}
+                                    {IconosCarrito}
+                                </div >*/}
                             </nav>
                         </div>
-                                
                     </div>
                 </div>
             </div>
