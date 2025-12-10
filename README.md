@@ -14,6 +14,21 @@ La página web tiene campos para la inserción de datos de productos y para el l
  
 
 
+## :pencil2: Implementación de la MockAPI
+Se utilizó una MockAPI que simula una API REST. 
+Permite desarrollar y probar aplicaciones frontend sin necesidad de una API real. **Facilita la creación rápida de endpoints para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y simular respuestas de servidor, lo que agiliza el desarrollo de aplicaciones web.** Es útil para prototipado rápido, pruebas de concepto y desarrollo frontend independiente del backend.
+
+Para eso, **cree desde https://mockapi.io/ un nuevo proyecto para luego poder importar la API en donde se encuentran todos los productos guardados y así poder hacer el consumo de esta API.**
+
+
+##  :computer: Tecnologías utilizadas
+Para la realización de este proyecto he utilizando:
+<p>
+-  **React** 
+-  **Tailwindcss** 
+</p>
+
+
 ## :pushpin: Acceso al proyecto
 
 Puedes acceder al código fuente del proyecto [aquí](https://react-tienda-nu.vercel.app/)
