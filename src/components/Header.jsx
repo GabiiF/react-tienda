@@ -75,7 +75,7 @@ const Header = () => {
                 {/* --------------------- ESTRUCTURA PRINCIPAL (ESCRITORIO) --------------------- */}
                 {/* 1. Contenedor de Navegación (Izquierda en escritorio) */}
                 <div className="hidden md:flex md:items-center md:space-x-8">
-                    <Link to="/" className="text-2xl font-bold">Mi Sitio React</Link>
+                    <Link to="/" className="text-xl font-['Nosifer']" onClick={toggleMenu}>Tienda React</Link>
                     <Navbar />
                 </div>
 
@@ -111,7 +111,7 @@ const Header = () => {
                         
                         {/* Cabecera del Menú Móvil (Nombre Empresa y 'X' para cerrar) */}
                         <div className="flex justify-between items-center mb-10">
-                            <Link to="/" className="text-2xl font-bold" onClick={toggleMenu}>Mi Sitio React</Link>
+                            <Link to="/" className="text-2xl font-['Nosifer']" onClick={toggleMenu}>Tienda React</Link>
                             {/* Botón de Cerrar (X) */}
                             <button
                                 onClick={toggleMenu}
