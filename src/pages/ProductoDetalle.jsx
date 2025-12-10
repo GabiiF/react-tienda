@@ -7,7 +7,7 @@ const ProductoDetalle = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const navigate = useNavigate();
-  {/*Carrito */}
+  {/*Carrito */ }
   const { agregarAlCarrito } = useContext(CarritoContext);
   const [agregado, setAgregado] = useState(false);
 
@@ -24,73 +24,89 @@ const ProductoDetalle = () => {
   }
 
   const handleAgregarAlCarrito = () => {
-    
-      agregarAlCarrito(producto);
-    
+
+    agregarAlCarrito(producto);
+
     setAgregado(true);
     setTimeout(() => setAgregado(false), 2000);
   };
   return (
     <>
       {/* Tailwind */}
-      <div className="columns-2 row-4">
-        <div className="mx-auto mt-2 sm:pr-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:gap-2 lg:px-8">
+      <div className="container mx-auto p-4 lg:py-12">
+        {/* CONTENEDOR PRINCIPAL:
+              - Móvil/Tablet (por defecto): Se apilan los elementos.
+              - Escritorio (lg): Se convierte en una cuadrícula de 2 columnas (lg:grid-cols-2).
+              - Espacio entre columnas (gap-8)
+            */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* === COLUMNA 1: IMAGEN === */}
+          <div className="md:pr-8">
           <img
             alt={producto.title}
             src={producto.image}
-            className="row-span-2 aspect-4/5 size-full object-contain bg-gray-200 sm:rounded-lg lg:aspect-3/4"
-            />
-        </div>
-        <div className="lg:col-span-2 lg:pr-8">
-          <h2 className="text-sm text-gray-600 mt-2 mx-auto"> Detalle del Producto N°{id}</h2>
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{producto.title}</h1>
+            className="md:row-span-3 aspect-4/5 size-full object-contain bg-gray-200 sm:rounded-lg md:aspect-3/4"/*w-full */
+          />
         </div>
 
-        <div className="mt-10">
-          <h2 className="text-sm font-medium text-gray-900">Descripción</h2>
+        {/* === COLUMNA 2: DETALLES DEL PRODUCTO === */}
+        <div className="flex flex-col">
 
-          <div className="mt-4 space-y-6">
-            <p className="text-sm text-gray-600">{producto.description}</p>
-          </div>
+          {/* 1. TÍTULO Y DETALLE */}
+          <h2 className="text-sm text-gray-600 mt-2"> Detalle del Producto N°{id}</h2>
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-6">{producto.title}</h1>
 
+          {/* 2. DESCRIPCIÓN */}
+          <div className="mt-6 md:col-span-2 md:row-span-2">
+            <h2 className="text-sm font-bold text-gray-900">Descripción:</h2>
 
-          {/* Selector de cantidad y boton de compra */}
-          <div className="mt-auto border-t border-gray-200 pt-6">
-            {/* Botones de agregar a carrito y verlo */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button 
-                onClick={handleAgregarAlCarrito}
-                className={`flex-1 py-4 px-6 rounded-md font-semibold text-white transition-all duration-200 ${
-                  agregado 
-                    ? 'bg-green-600 hover:bg-green-700' 
-                    : 'bg-black hover:bg-gray-800'
-                }`}
-              >
-                {agregado ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    ¡Agregado al carrito!
-                  </span>
-                ) : (
-                  'Agregar al Carrito'
-                )}
-              </button>
-              
-              <button 
-                onClick={() => navigate('/carrito')}
-                className="sm:w-auto py-4 px-6 border-2 border-black text-black rounded-md font-semibold hover:bg-black hover:text-white transition-colors duration-200"
-              >
-                Ver Carrito
-              </button>
+            <div className="mt-2 mb-8 space-y-4">
+              <p className="text-sm text-gray-600">{producto.description}</p>
             </div>
 
+
+            {/* Selector de cantidad y boton de compra */}
+            {/* 3. BOTONES DE ACCIÓN (Selector de cantidad, botones, etc.) */}
+            {/* El div se estira automáticamente gracias al flex-col del padre, 
+                       y empuja el contenido al final si hay más espacio. */}
+            <div className="mt-auto border-gray-200 pt-6">
+              {/* Selector de Cantidad (Placeholder) */}
+              {/* Botones de agregar a carrito y verlo */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={handleAgregarAlCarrito}
+                  className={`sm:w-auto py-4 px-6 rounded-md font-semibold text-white transition-all duration-200 ${agregado
+                      ? 'bg-green-600 hover:bg-green-700'
+                      : 'bg-black hover:bg-gray-800'
+                    }`}
+                >
+                  {agregado ? (
+                    <span className="flex items-center justify-center">
+                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      ¡Agregado al carrito!
+                    </span>
+                  ) : (
+                    'Agregar al Carrito'
+                  )}
+                </button>
+
+                <button
+                  onClick={() => navigate('/carrito')}
+                  className="w-full sm:w-auto py-4 px-6 border-2 border-black text-black rounded-md font-semibold hover:bg-black hover:text-white transition-colors duration-200"
+                >
+                  Ver Carrito
+                </button>
+              </div>
+            </div>
+
+
           </div>
         </div>
 
-        </div>
-
+      </div>
+ </div>
 
     </>
   );
