@@ -1,7 +1,6 @@
 import { useState } from "react";
 import FormProducto from "./FormProducto";
 import { useProductosContext } from "../context/ProductosContext";
-import styles from "./GestionProducto.module.css";
 import CirclePlus from "../assets/CirclePlus";
 import SquarePen from "../assets/SquarePen";
 import TrashIcon from "../assets/TrashIcon";
