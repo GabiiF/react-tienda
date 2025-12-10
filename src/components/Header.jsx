@@ -5,7 +5,6 @@ import { useAuthContext } from "../context/AuthContext";
 import { CarritoContext } from "../context/CarritoContext";
 import { useContext, useState } from "react";
 
-
 const Header = () => {
     const { usuario, logout } = useAuthContext();
     const estaLogeado = !!usuario;
@@ -55,8 +54,7 @@ const Header = () => {
     );
 
     const IconosCarrito = (
-        <>
-            {/* Icono de Carrito con Contador */}
+        <>{/* Icono de Carrito con Contador */}
             <div className="relative">
                 <Link to="/carrito">
                     <BagIcon className="text-sm font-bold py-1 px-3 rounded" />
@@ -75,16 +73,13 @@ const Header = () => {
             {/* Seccion Central: Componente NavBar */}
             <div className="container mx-auto flex justify-between items-center">
                 {/* --------------------- ESTRUCTURA PRINCIPAL (ESCRITORIO) --------------------- */}
-                {/* Logo/Nombre del Sitio */}
                 {/* 1. Contenedor de Navegación (Izquierda en escritorio) */}
                 <div className="hidden md:flex md:items-center md:space-x-8">
                     <Link to="/" className="text-2xl font-bold">Mi Sitio React</Link>
                     <Navbar />
-
-
                 </div>
-                {/* 2. Botón de Hamburguesa y Info de Sesión (Derecha en escritorio) */}
-                {/* Botón de Menú Hamburguesa */}
+
+                {/* 2. Botón de Menú Hamburguesa y Info de Sesión (Derecha en escritorio) */}
                 <div className="flex items-center space-x-4">
                     {/* Botón de Menú Hamburguesa (Visible solo en móviles) */}
                     <button
@@ -99,7 +94,6 @@ const Header = () => {
                             />
                         </svg>
                     </button>
-
                     {/*Para que aparezca afuera - Botón Cerrar Sesion o Ingresá y Carrito*/}
                     <div className="flex items-center space-x-4  md:ml-4" >
                         {SessionInfo}
@@ -114,11 +108,10 @@ const Header = () => {
                     ${isOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden`
                 }>
                     <div className="p-4 flex flex-col h-full">
-
+                        
                         {/* Cabecera del Menú Móvil (Nombre Empresa y 'X' para cerrar) */}
                         <div className="flex justify-between items-center mb-10">
                             <Link to="/" className="text-2xl font-bold" onClick={toggleMenu}>Mi Sitio React</Link>
-
                             {/* Botón de Cerrar (X) */}
                             <button
                                 onClick={toggleMenu}
@@ -131,17 +124,16 @@ const Header = () => {
                             </button>
                         </div>
                         {/* Termina Botón de Menú Hamburguesa */}
-                        {/*Menu uno abajo del otro*/}
-                        {/* Contenido Principal de Navegación y Sesión */}
+
+                        {/* Contenido Principal de Navegación y Sesión - Menu uno abajo del otro*/}
                         <div className={navClasses}>
-                            {/* 1. Navegación Principal (3 enlaces) */}
+                            {/* 1. Navegación Principal (3 enlaces) - Menu uno abajo del otro */}
                             <nav className="flex flex-col md:flex-row md:space-x-6 space-y-7 md:space-y-0 mt-4 md:mt-0">
                                 <Link to="/" className="hover:text-blue-400" onClick={toggleMenu}>Inicio</Link>
                                 <Link to="/moda" className="hover:text-blue-400" onClick={toggleMenu}>Moda</Link>
                                 <Link to="/tecnologia" className="hover:text-blue-400" onClick={toggleMenu}>Tecnología</Link>
-                                {/*Botón Cerrar Sesion o Ingresá*/}
-
-                                {/*Termino Menu uno abajo del otro
+                                {/*Termino Menu uno abajo del otro*/}
+                                {/*Botón Cerrar Sesion o Ingresá, usuario y carrito
                                 <div className="flex items-center space-x-4 md:ml-6" >
                                     {SessionInfo}
                                     {IconosCarrito}
