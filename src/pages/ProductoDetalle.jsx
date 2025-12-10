@@ -1,9 +1,15 @@
+import { useContext } from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { CarritoContext } from "../context/CarritoContext";
 
 const ProductoDetalle = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
+  const navigate = useNavigate();
+  {/*Carrito */}
+  const { agregarAlCarrito } = useContext(CarritoContext);
+  const [agregado, setAgregado] = useState(false);
 
   useEffect(() => {
     /*fetch(`https://fakestoreapi.com/products/${id}`)*/
@@ -12,11 +18,18 @@ const ProductoDetalle = () => {
       .then(dato => setProducto(dato))
   }, [id]);//[id] renderiza a cada llamado
 
-
   /*si no encuentra el producto */
   if (!producto) {
     return <p>Cargando ...</p>
   }
+
+  const handleAgregarAlCarrito = () => {
+    
+      agregarAlCarrito(producto);
+    
+    setAgregado(true);
+    setTimeout(() => setAgregado(false), 2000);
+  };
   return (
     <>
       {/* Tailwind */}
@@ -38,6 +51,41 @@ const ProductoDetalle = () => {
 
           <div className="mt-4 space-y-6">
             <p className="text-sm text-gray-600">{producto.description}</p>
+          </div>
+
+
+          {/* Selector de cantidad y boton de compra */}
+          <div className="mt-auto border-t border-gray-200 pt-6">
+            {/* Botones de agregar a carrito y verlo */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button 
+                onClick={handleAgregarAlCarrito}
+                className={`flex-1 py-4 px-6 rounded-md font-semibold text-white transition-all duration-200 ${
+                  agregado 
+                    ? 'bg-green-600 hover:bg-green-700' 
+                    : 'bg-black hover:bg-gray-800'
+                }`}
+              >
+                {agregado ? (
+                  <span className="flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    ¡Agregado al carrito!
+                  </span>
+                ) : (
+                  'Agregar al Carrito'
+                )}
+              </button>
+              
+              <button 
+                onClick={() => navigate('/carrito')}
+                className="sm:w-auto py-4 px-6 border-2 border-black text-black rounded-md font-semibold hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                Ver Carrito
+              </button>
+            </div>
+
           </div>
         </div>
 
