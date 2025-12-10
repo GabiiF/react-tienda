@@ -23,10 +23,8 @@ Para eso, **cree desde https://mockapi.io/ un nuevo proyecto para luego poder im
 
 ##  :computer: Tecnologías utilizadas
 Para la realización de este proyecto he utilizando:
-<p>
 -  **React** 
 -  **Tailwindcss** 
-</p>
 
 
 ## :pushpin: Acceso al proyecto
