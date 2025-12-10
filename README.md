@@ -2,10 +2,6 @@
 Tienda React es una aplicación en donde te permite crear, listar, editar o eliminar productos.
 
 ![Descripción de la imagen](src/assets/img/inicio.png)
-![Descripción de la imagen](https://raw.githubusercontent.com/GabiiF/react-tienda/refs/heads/main/src/assets/img/inicio.png)
-<p align="center">
-     <img width="500" heigth="300" src="assets\img\inicio.png">
-</p>
 
 ## :hammer: Funcionalidades
 La página web tiene campos para la inserción de datos de productos y para el listado. A su vez, el usuario puede elegir si quiere eliminar el producto y el resultado se muestra en pantalla.
