@@ -25,10 +25,10 @@
   gap: 20px; 
 }
 
-.iconoDeCarrito {
+/*.iconoDeCarrito {
   position: relative;
   cursor: pointer;
-}
+}*/
 
 .contadorDeCarrito {
   position: absolute;
@@ -43,7 +43,7 @@
   line-height: 1;
 }
 
-.icono {
+/*.icono {
   font-size: 24px;
   cursor: pointer;
-}
+}*/
