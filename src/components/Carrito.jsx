@@ -25,7 +25,7 @@ const Carrito = () => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="px-4 sm:px-6 lg:px-8 py-8 space-y-4">
       <h2 className="text-3xl font-bold mb-8">Carrito</h2>
       {carrito.map((producto, indice) =>
         <div key={indice} className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">

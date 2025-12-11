@@ -33,7 +33,7 @@ const ProductoDetalle = () => {
   return (
     <>
       {/* Tailwind */}
-      <div className="container mx-auto p-4 lg:py-12">
+      <div className="container mx-auto p-4 lg:py-12 px-4 sm:px-6 lg:px-8 py-8 ">
         {/* CONTENEDOR PRINCIPAL:
               - Móvil/Tablet (por defecto): Se apilan los elementos.
               - Escritorio (lg): Se convierte en una cuadrícula de 2 columnas (lg:grid-cols-2).
