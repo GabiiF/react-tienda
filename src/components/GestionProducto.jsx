@@ -83,14 +83,14 @@ const [productoAEliminar, setProductoAEliminar] = useState(null);
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
                      {producto.title}
                     </h3>
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-sm text-gray-700 lg:text-2xl">
                       ${producto.price}
                       </p>
                   </div>
 
 
                 {/* Botones para editar y eliminar este producto */}
-                <div className="flex gap-3 sm:shrink-0">
+                <div className="flex items-center justify-center gap-2 sm:shrink-2">
                 <button
                   className="flex items-center justify-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-md font-medium hover:bg-gray-800 transition-colors duration-200"
                   onClick={() => abrirFormularioEditar(producto)}

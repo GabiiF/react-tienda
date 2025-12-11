@@ -69,7 +69,7 @@ const Header = () => {
         </>
     );
     return (
-        <header className="bg-gray-800 text-white p-3 px-4">
+        <header className="sticky top-0  bg-gray-800 text-white p-3 px-4">
             {/* Seccion Central: Componente NavBar */}
             <div className="container mx-auto flex justify-between items-center">
                 {/* --------------------- ESTRUCTURA PRINCIPAL (ESCRITORIO) --------------------- */}
