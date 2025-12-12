@@ -32,21 +32,21 @@ const Productos = () => {
     const cambiarPagina = (numeroPagina) => {
         setPaginaActual(numeroPagina);
         // 1. Obtiene el elemento de destino por su ID
-        const destinoElemento = document.getElementById('header');
+        const destinoElemento = document.getElementById('productos');
         
         // 2. Si el elemento existe, desplaza la ventana hacia él
         if (destinoElemento) {
             destinoElemento.scrollIntoView({ 
                 behavior: 'smooth', // Desplazamiento suave (opcional)
-                block: 'end'      // Alinea la parte superior de la sección con la parte superior de la ventana
+                block: 'start'      // Alinea la parte superior de la sección con la parte superior de la ventana
             });
         }
     }
     return (
-        <div id="productos" className="px-4 sm:px-6 lg:px-8 py-8">
+        <div id="productos" className="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-8">
             <h2 className="text-3xl font-bold pb-8">Productos</h2>
             {/*Comienza el Card */}
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 xl:gap-x-8">
                 {productosActuales.map((producto) => (
                     <span key={producto.id} className="border-gray-700 shadow-2xl">
                         <Link to={`/productos/${producto.id}`} className="group">
