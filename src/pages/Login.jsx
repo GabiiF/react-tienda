@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
+import EyeOpen from "../assets/EyeOpen";
+import EyeClosed from "../assets/EyeClosed";
+
 // No se pide para la pre-entrega
 const Login = () => {
     const [usuario, setUsuario] = useState('');
@@ -8,6 +11,14 @@ const Login = () => {
 
     const { login } = useAuthContext();
     const navigate = useNavigate();
+
+    // Inicializamos el estado en 'false' (oculto)
+    const [showPassword, setShowPassword] = useState(false);
+
+    // Función para alternar el estado (toggle)
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const manejarSubmit = (evento) => {
         evento.preventDefault();
@@ -61,10 +72,11 @@ const Login = () => {
                                     </a>
                                 </div>
                             </div>
-                            <div className="mt-2">
+                            {/* AQUÍ se cambia el 'type' basado en el estado*/}
+                            <div className="relative mt-2">
                                 <input
                                     id="password"
-                                    type="text" /*password */
+                                    type={showPassword ? 'text' : 'password'}
                                     name="password"
                                     value={contrasenia}
                                     onChange={(evento) => setContrasenia(evento.target.value)}
@@ -72,6 +84,15 @@ const Login = () => {
                                     required
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                 />
+                                {/* Botón/Icono del Ojo */}
+                                <button
+                                    type="button"
+                                    onClick={togglePasswordVisibility}
+                                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                                >
+                                    {/* AQUÍ se cambia el icono basado en el estado */}
+                                    {showPassword ? <EyeOpen /> : <EyeClosed />}
+                                </button>
                             </div>
                         </div>
                         {/*Boton*/}
