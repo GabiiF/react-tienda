@@ -91,7 +91,7 @@ const Login = () => {
                                     className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                 >
                                     {/* AQUÍ se cambia el icono basado en el estado */}
-                                    {showPassword ? <EyeOpen /> : <EyeClosed />}
+                                    {showPassword ? <EyeOpen className=""/> : <EyeClosed className="sm:size-3"/>}
                                 </button>
                             </div>
                         </div>
