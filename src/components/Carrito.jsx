@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 import { Link } from "react-router-dom";
+import BroomIcon from "../assets/BroomIcon";
 
 const Carrito = () => {
   //llamamos del context
-  const { carrito, eliminarDelCarrito } = useContext(CarritoContext);
+  const { carrito, eliminarDelCarrito, vaciarCarrito} = useContext(CarritoContext);
 
   {/*Si no hay produsctos en el carrito */ }
   if (carrito.length === 0) {
@@ -26,7 +27,21 @@ const Carrito = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 py-8 space-y-4">
-      <h2 className="text-3xl font-bold mb-8">Carrito</h2>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+              <h2 className="text-3xl font-bold text-gray-900">Carrito</h2>
+              {/* Botón para agregar producto */}
+              <button
+                onClick={() => vaciarCarrito()}
+                className="flex items-center justify-center gap-2 px-4 py-2 text-gray-600 border border-gray-400 bg-gray-200 hover:text-red-500 rounded-md font-semibold transition-colors duration-200"
+              >
+                {/*<CirclePlus className="w-5 h-5" />*/}
+                {/* Uso el icono de la escoba */}
+                <BroomIcon className="h-5 w-5" />
+                <span>Vaciar Carrito</span>
+              </button>
+            </div>
+
+      {/*<h2 className="text-3xl font-bold mb-8">Carrito</h2>*/}
       {carrito.map((producto, indice) =>
         <div key={indice} className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
           <div className="grid grid-cols-3 gap-4 mb-6">
