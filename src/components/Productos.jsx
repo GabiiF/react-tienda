@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { useContext } from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CarritoContext } from "../context/CarritoContext";
 import { useProductosContext } from "../context/ProductosContext";
@@ -34,7 +32,7 @@ const Productos = () => {
                         <p className="mt-1 text-lg font-medium text-gray-900 px-2 sm:pl-6 sm:pt-2">${producto.price}</p>
                        
                         {/*Botones Tailwind */}
-                            <div className="mt-5 mb-2 flex items-center justify-start sm:px-6 sm:pt-2 gap-x-2">
+                            <div className="mt-5 mb-2 px-2 flex items-center justify-start sm:px-6 sm:pt-2 gap-x-2">
                                 <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 active:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     onClick={() => agregarAlCarrito(producto)}>Agregar</button>
                                 <Link to={`/productos/${producto.id}`} className="text-sm font-semibold text-gray-900   rounded-md px-3.5 py-2.5 bg-gray-400/50 hover:bg-gray-200 shadow-2xl">Detalles <span aria-hidden="true">→</span></Link>
