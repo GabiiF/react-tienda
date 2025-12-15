@@ -45,7 +45,7 @@ const ProductoDetalle = () => {
           <img
             alt={producto.title}
             src={producto.image}
-            className="md:row-span-3 aspect-square size-full object-contain bg-gray-200 sm:rounded-lg"/*w-full */
+            className="md:row-span-3 aspect-square width-full object-contain bg-gray-200 sm:rounded-lg"/*w-full */
           />
         </div>
 
