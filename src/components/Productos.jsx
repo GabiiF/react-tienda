@@ -52,7 +52,7 @@ const Productos = () => {
                         <Link to={`/productos/${producto.id}`} className="group">
                             <img alt={producto.title}
                                 src={producto.image}
-                                className="aspect-square w-full rounded-lg bg-gray-200 object-contain group-hover:opacity-75 xl:aspect-7/8"
+                                className="aspect-square w-full rounded-lg bg-gray-200 object-contain group-hover:opacity-75"
                             />
                         </Link>
                         <h3 className="mt-4 text-sm text-gray-700 px-2 sm:px-6 sm:pt-2">{producto.title}</h3>
