@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Tecnologia from './pages/Tecnologia'
 import Moda from './pages/Moda'
 import ProductoDetalle from './pages/ProductoDetalle'
+import ResultadosBusqueda from './components/ResultadosBusqueda'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import { Routes, Route } from 'react-router-dom'
@@ -23,6 +24,7 @@ function App() {
       <Route path="/tecnologia" element={<Tecnologia/> }/>
       <Route path="/moda" element={<Moda/> }/>
       <Route path="/productos/:id" element={<ProductoDetalle/> }/>
+      <Route path="/busqueda" element={<ResultadosBusqueda />} />
 
       <Route path="/login" element={<Login/> }/>
       {/*encierro admin para que no lo vean todos*/}

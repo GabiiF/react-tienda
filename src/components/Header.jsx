@@ -45,7 +45,7 @@ const Header = () => {
                     </span>
                 )}
                 {/*Boton Cerrar sesion o Ingresar */}
-                <button onClick={logout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-sm text-lg">Cerrar Sesion</button>
+                <button onClick={logout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-sm text-lg">Cerrar <br></br> Sesion</button>
             </>) : (
             <Link to="/login">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm text-2xl">Ingresá</button>
@@ -69,7 +69,7 @@ const Header = () => {
         </>
     );
     return (
-        <header className="sticky top-0  bg-gray-800 text-white p-3 px-4">
+        <header className="sticky top-0 z-50 bg-gray-800 text-white p-3 px-4">
             {/* Seccion Central: Componente NavBar */}
             <div className="container mx-auto flex justify-between items-center">
                 {/* --------------------- ESTRUCTURA PRINCIPAL (ESCRITORIO) --------------------- */}
