@@ -41,7 +41,6 @@ const Carrito = () => {
               </button>
             </div>
 
-      {/*<h2 className="text-3xl font-bold mb-8">Carrito</h2>*/}
       {carrito.map((producto, indice) =>
         <div key={indice} className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
           <div className="grid grid-cols-3 gap-4 mb-6">

@@ -6,10 +6,6 @@ import { useProductosContext } from "../context/ProductosContext";
 import BarraBusqueda from "./BarraBusqueda";
 
 const Productos = () => {
-    /*const [producto, setProducto] = useState([]);//vacio
-    const [cargando, setCargando] = useState(true);//al principio esta cargando
-    const [error, setError] = useState(null);//al principio no contiene error*/
-
     /*uso el contexto*/
     const { productos, cargando, error } = useProductosContext();
     const { agregarAlCarrito } = useContext(CarritoContext);

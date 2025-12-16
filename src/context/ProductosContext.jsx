@@ -3,9 +3,9 @@ import { useState, useEffect, createContext, useContext } from 'react';
 export const ProductosContext = createContext();
 
 export const ProductosProvider = ({ children }) => {
-  const [productos, setProductos] = useState([]);
-  const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState(null);
+  const [productos, setProductos] = useState([]);//vacio
+  const [cargando, setCargando] = useState(true);//al principio esta cargando
+  const [error, setError] = useState(null);//al principio no contiene error
   
   const API = "https://6931991711a8738467cfaec7.mockapi.io/productos";
   
